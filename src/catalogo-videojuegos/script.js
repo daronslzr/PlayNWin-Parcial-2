@@ -78,7 +78,7 @@ function displayTable(jueguitos) {
         }
     }, );
 }
-/*
+
 function initButtonsHandler() {
 
     document.getElementById('filter-form').addEventListener('submit', event => {
@@ -111,10 +111,10 @@ function filterGames(jueguitos, text, minRate, maxRate, minPrice, maxPrice) {
         (!maxRate || juego.rate <= maxRate) &&
         (!minPrice || juego.price >= minPrice) &&
         (!maxPrice || juego.price <= maxPrice) &&
-        (!text || juego.name.toLowerCase().includes(text) || house.description.toLowerCase().includes(text))
+        (!text || juego.name.toLowerCase().includes(text) || juego.description.toLowerCase().includes(text))
     );
 }
-*/
+
 displayTable(gamelist);
 
-//initButtonsHandler();
+initButtonsHandler();
