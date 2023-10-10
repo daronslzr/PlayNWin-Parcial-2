@@ -40,19 +40,19 @@ const gamelist = [game1, game2];
 
 function displayTable(jueguitos) {
 
-    //clearTable();
+    clearTable();
 
-    //showLoadingMessage();
+    showLoadingMessage();
 
     setTimeout(() => {
 
         if (jueguitos.length === 0) {
 
-            //showNotFoundMessage();
+            showNotFoundMessage();
 
         } else {
 
-            //hideMessage();
+            hideMessage();
 
             const tablaBody = document.getElementById('data-table-body');
 
@@ -76,8 +76,43 @@ function displayTable(jueguitos) {
                 tablaBody.appendChild(row);
             });
         }
-    }, );
+    }, 2000);
 }
+
+// Funcion que limpia la tabla
+function clearTable() {
+    const tableBody = document.getElementById('data-table-body');
+  
+    tableBody.innerHTML = '';
+  }
+  
+  
+  // Funcion que muestra mensaje de carga
+  function showLoadingMessage() {
+    const message = document.getElementById('message');
+  
+    message.innerHTML = 'Cargando...';
+  
+    message.style.display = 'block';
+  }
+  
+  
+  // Funcion que muestra mensaje de que no se encuentraron datos
+  function showNotFoundMessage() {
+    const message = document.getElementById('message');
+  
+    message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
+  
+    message.style.display = 'block';
+  }
+  
+  
+  // Funcion que oculta mensaje
+  function hideMessage() {
+    const message = document.getElementById('message');
+  
+    message.style.display = 'none';
+  }
 
 function initButtonsHandler() {
 
