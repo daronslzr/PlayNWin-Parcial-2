@@ -14,6 +14,12 @@ body {
     background-color: $colorFondo;
 }
 
+main, footer {
+    padding: 2rem;
+    padding-top: $header-height +10px;
+
+}
+
 /* ENCABEZADOS */
 h1 {
     font-size: 1.75rem;

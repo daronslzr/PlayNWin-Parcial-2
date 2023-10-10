@@ -11,6 +11,10 @@ body {
   color: #7900FF;
   background-color: #E6FFFD; }
 
+main, footer {
+  padding: 2rem;
+  padding-top: 100px; }
+
 /* ENCABEZADOS */
 h1 {
   font-size: 1.75rem;
@@ -63,3 +67,33 @@ nav {
     display: none; } }
 
 /* #endregion RESPONSIVE */
+.table-container {
+  max-width: 100%;
+  overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 1rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); }
+  table thead tr {
+    background-color: #548CFF;
+    color: #fff;
+    text-align: left; }
+    table thead tr th {
+      border: none;
+      font-size: 1.125rem;
+      padding: 2rem 1.25rem;
+      white-space: nowrap; }
+  table tbody tr {
+    background-color: #D6EEEE;
+    border-bottom: none;
+    border-bottom: 1px solid #DDD; }
+    table tbody tr td {
+      padding: 1rem 1.25rem;
+      border: none;
+      white-space: wrap; }
+      table tbody tr td img {
+        max-width: 100px;
+        height: auto; }
