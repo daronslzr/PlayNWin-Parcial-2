@@ -1,0 +1,60 @@
+@import 'variables';
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: fixed;
+    width: 100%;
+    height: $header-height;
+    padding: 0px 20px;
+
+    background: $colorPrincipal;
+
+    z-index: 1;
+}
+
+/* #region NAVEGACION */
+nav {
+    width: 60vw;
+
+    ul {
+        display: flex;
+        list-style: none;
+        justify-content: space-between;
+        column-gap: 2rem;
+
+        font-size: 1.5rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: $blanco;
+        font-weight: 700;
+    }
+}
+
+#logo{
+    display: flex;
+    height: 65px;
+    width: 55px;
+}
+
+#contacto {
+    display: flex;
+    height: 45px;
+    width: 45px;
+}
+/* #endregion NAVEGACION */
+
+/* #region RESPONSIVE */
+@media screen and (max-width: 768px) {
+    nav {
+        ul {
+            display: none;
+        }
+    }
+}
+
+/* #endregion RESPONSIVE */
