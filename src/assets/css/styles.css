@@ -29,6 +29,7 @@ header {
   height: 90px;
   padding: 0px 20px;
   background: #B799FF;
+  box-shadow: 0 8px 8px -4px #bababa;
   z-index: 1; }
 
 /* #region NAVEGACION */
