@@ -1,5 +1,4 @@
 class videogame {
-
     constructor(id, name, plataform, description, price, rate, developers, doggo, image) {
         this.id = id;
         this.name = name;
@@ -14,7 +13,11 @@ class videogame {
 }
 
 const game1 = new videogame(1, "Baldur's Gate", "Pc/PS5/Xbox", "dnd el videojuego", 1300, 5, "Larian Studio", "si", "baldurs3.png");
-const game2 = new videogame(2, "Budukai Tenkashi 3", "PS2", "Dragon Ball z peleas shidoriz", 1000, 4.5, "japon", "no", "goku.png");
+const game2 = new videogame(2, "9 Years of shadow", "Pc", "aramduras mitologicas te dean el poder", 400, 4.2, "Algo en guadalajara", "maybe", "9years.png");
+const game3 = new videogame(3, "God of war", "PS5", "dios muy enojado como para morir", 1100, 5, "naughty dogs maybe", "probablemente nope", "gow.png");
+const game4 = new videogame(4, "Pokemon blanco/negro 2", "DS", "esclabiza monstruos a tu merced", 900, 4, "nintendo", "ta raro", "pokemon.png");
+const game5 = new videogame(5, "Cosmic Wheel Sisterhood", "Xbox", "bruja fue expulsada de su convenio y planea venganza maybe", 200, 3, "si, pero esta en steam", "no hay", "cosmic.png");
+const game6 = new videogame(6, "Budukai Tenkashi 3", "PS2", "Dragon Ball z peleas shidoriz", 1000, 1, "japon", "no", "goku.png");
 //const juego2 = new RealEstate(2, "Casa Beta", "Diseño moderno y espacioso con acabados de lujo.", 3, 3.5, 350000, 300, 180, "real-estate-2.jpg");
 //const juego3 = new RealEstate(3, "Casa Teta", "Casa ideal para familias grandes con jardín y areas de convivencia.", 4, 4.5, 450000, 400, 200, "real-estate-3.jpg");
 
@@ -36,7 +39,7 @@ realEstateList.forEach(item => {console.log(item)});
 */
 
 
-const gamelist = [game1, game2];
+const gamelist = [game1, game2, game3, game4, game5, game6];
 
 function displayTable(jueguitos) {
 
@@ -146,7 +149,7 @@ function filterGames(jueguitos, text, minRate, maxRate, minPrice, maxPrice) {
         (!maxRate || juego.rate <= maxRate) &&
         (!minPrice || juego.price >= minPrice) &&
         (!maxPrice || juego.price <= maxPrice) &&
-        (!text || juego.name.toLowerCase().includes(text) || juego.description.toLowerCase().includes(text))
+        (!text || juego.name.toLowerCase().includes(text)  || juego.developers.toLowerCase().includes(text)  || juego.plataform.toLowerCase().includes(text))
     );
 }
 
