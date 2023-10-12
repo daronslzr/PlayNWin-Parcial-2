@@ -1,7 +1,15 @@
 @import '../assets/scss/variables';
 
+#section-catalogo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+}
+
 .table-container {
-    max-width: 100%;
+    width: 100%;
     overflow-x: auto;
 }
 
@@ -9,8 +17,8 @@
 table {
     width: 100%;
     border-collapse: collapse;
-    white-space: nowrap;
-    font-size: 1rem;
+    white-space: wrap;
+    
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 
     thead tr {
@@ -27,9 +35,11 @@ table {
     }
 
     tbody tr {
-        background-color: #D6EEEE;
-        border-bottom: none;
-        border-bottom: 1px solid #DDD;
+        border-bottom: 4px solid lighten($colorSecundario,20%);
+
+        &:last-of-type{
+            border-bottom: none;
+        }
 
         td {
             padding: 1rem 1.25rem;
@@ -42,4 +52,49 @@ table {
             }
         }
     }
+}
+
+#filter-section{
+    display: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: lighten($colorSecundario, 30%);
+    //display: none;
+    //align-items: center;
+}
+
+input[type="text"],input[type="number"]{
+    min-width: 200px;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border: 0.15rem solid $colorAcento;
+
+    &:hover{
+        border: 3px solid $colorSecundario;
+    }
+}
+
+#text{
+    min-width: 320px;
+}
+
+//Estilos para los botones de filtrado
+button{
+    min-width: 250px;
+    flex-grow: 1;
+    padding: 0.65rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &#apply-filters,&#showFilters{
+        background-color: $colorAcento;
+        color: $blanco;
+    }
+    
+    &#apply-filters:hover,&#showFilters:hover{
+        background-color: darken($colorAcento,5%);
+    }
+
 }

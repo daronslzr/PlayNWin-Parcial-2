@@ -71,7 +71,7 @@ function displayTable(jueguitos) {
               <td>${juego.name}</td>
               <td>${juego.plataform}</td>
               <td>${juego.description}</td>
-              <td>${(juego.price)}</td>
+              <td>${formatCurrency(juego.price)}</td>
               <td>${juego.rate}</td>
               <td>${(juego.developers)}</td>
               <td>${(juego.doggo)}</td>
@@ -85,37 +85,37 @@ function displayTable(jueguitos) {
 // Funcion que limpia la tabla
 function clearTable() {
     const tableBody = document.getElementById('data-table-body');
-  
+
     tableBody.innerHTML = '';
-  }
-  
-  
-  // Funcion que muestra mensaje de carga
-  function showLoadingMessage() {
+}
+
+
+// Funcion que muestra mensaje de carga
+function showLoadingMessage() {
     const message = document.getElementById('message');
-  
+
     message.innerHTML = 'Cargando...';
-  
+
     message.style.display = 'block';
-  }
-  
-  
-  // Funcion que muestra mensaje de que no se encuentraron datos
-  function showNotFoundMessage() {
+}
+
+
+// Funcion que muestra mensaje de que no se encuentraron datos
+function showNotFoundMessage() {
     const message = document.getElementById('message');
-  
+
     message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
-  
+
     message.style.display = 'block';
-  }
-  
-  
-  // Funcion que oculta mensaje
-  function hideMessage() {
+}
+
+
+// Funcion que oculta mensaje
+function hideMessage() {
     const message = document.getElementById('message');
-  
+
     message.style.display = 'none';
-  }
+}
 
 function initButtonsHandler() {
 
@@ -128,6 +128,14 @@ function initButtonsHandler() {
         document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
         applyFilters();
     });
+
+    const closeFilter = document.getElementById('close-filters');
+    closeFilter.addEventListener("click", () => {
+        document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
+        applyFilters();
+        document.getElementById('filter-section').style.display = "none";
+        showFilter.style.display = "block";
+    })
 }
 
 function applyFilters() {
@@ -149,9 +157,15 @@ function filterGames(jueguitos, text, minRate, maxRate, minPrice, maxPrice) {
         (!maxRate || juego.rate <= maxRate) &&
         (!minPrice || juego.price >= minPrice) &&
         (!maxPrice || juego.price <= maxPrice) &&
-        (!text || juego.name.toLowerCase().includes(text)  || juego.developers.toLowerCase().includes(text)  || juego.plataform.toLowerCase().includes(text))
+        (!text || juego.name.toLowerCase().includes(text) || juego.developers.toLowerCase().includes(text) || juego.plataform.toLowerCase().includes(text))
     );
 }
+
+const showFilter = document.getElementById('showFilters');
+showFilter.addEventListener("click", () => {
+    document.getElementById('filter-section').style.display = "flex";
+    showFilter.style.display = "none";
+})
 
 displayTable(gamelist);
 

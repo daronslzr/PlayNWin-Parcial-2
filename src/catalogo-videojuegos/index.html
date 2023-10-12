@@ -16,7 +16,7 @@
 
         <nav>
             <ul>
-                <li><a href="./index.html">Home</a></li>
+                <li><a href="../index.html">Home</a></li>
                 <li><a href="../catalogo-videojuegos/index.html">Catalogo</a></li>
                 <li><a href="../ventas-videojuegos/index.html">Ventas</a></li>
             </ul>
@@ -28,52 +28,61 @@
     </header>
 
     <main>
-        <h1>Catalogo de Videojuegos</h1>
+        <h1>Catálogo de Videojuegos</h1>
 
-        <form id="filter-form">
-            <div id="filter-section">
-                <input type="text" id="text" placeholder="Titulo/Plataforma/desarrolladores" class="filter-field">
-                <input type="number" id="calificacion-min" placeholder="Rating del juego minimo" class="filter-field">
-                <input type="number" id="calificacion-max" placeholder="Rating del juego maximo" class="filter-field">
-                <input type="number" id="price-min" placeholder="Precio mínimo" class="filter-field">
-                <input type="number" id="price-max" placeholder="Precio máximo" class="filter-field">
+        <section id="section-catalogo">
+            <button id="showFilters">Filtrar Videojuegos</button>
 
-                <button type="submit" id="apply-filters">Aplicar filtros</button>
-                <button type="reset" id="reset-filters">Restablecer</button>
+            <form id="filter-form">
+                <div id="filter-section">
+                    <input type="text" id="text" placeholder="Titulo/Plataforma/Desarrolladores" class="filter-field">
+                    <input type="number" id="calificacion-min" placeholder="Rating del Juego Mínimo"
+                        class="filter-field">
+                    <input type="number" id="calificacion-max" placeholder="Rating del Juego Máximo"
+                        class="filter-field">
+                    <input type="number" id="price-min" placeholder="Precio Mínimo" class="filter-field">
+                    <input type="number" id="price-max" placeholder="Precio Máximo" class="filter-field">
+
+                    <button type="submit" id="apply-filters">Aplicar Filtros</button>
+                    <button type="reset" id="reset-filters">Restablecer Filtros</button>
+                    <button type="reset" id="close-filters">Cerrar Filtros</button>
+                </div>
+            </form>
+
+            <br>
+
+            <div class="table-container">
+
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Imagen</th>
+                            <th>Título</th>
+                            <th>Plataforma(s)</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
+                            <th>Calificación</th>
+                            <th>Desarrolladores</th>
+                            <th>Can you pet the dog?</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- Aquí se generará la tabla dinámicamente -->
+
+                    </tbody>
+                </table>
             </div>
-        </form>
+            <div id="message">
+                <p>No hay casas disponibles en este momento.</p>
+            </div>
+        </section>
 
-        <br>
-
-        <div class="table-container">
-
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Imagen</th>
-                        <th>Titulo</th>
-                        <th>Plataforma(s)</th>
-                        <th>Descripcion</th>
-                        <th>Precio</th>
-                        <th>Calificacion</th>
-                        <th>Desarrolladores</th>
-                        <th>Can you pet the dog?</th>
-                    </tr>
-                </thead>
-                <tbody id="data-table-body">
-                    <!-- Aquí se generará la tabla dinámicamente -->
-
-                </tbody>
-            </table>
-        </div>
-        <div id="message">
-            <p>No hay casas disponibles en este momento.</p>
-        </div>
     </main>
 
 
     <script src="./script.js"></script>
+    <script src="../shared/util.js"></script>
 
 </body>
 
