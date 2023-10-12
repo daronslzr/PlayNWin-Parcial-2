@@ -40,6 +40,9 @@ table {
         &:last-of-type{
             border-bottom: none;
         }
+        &:hover{
+            background-color: lighten($colorSecundario,20%);
+        }
 
         td {
             padding: 1rem 1.25rem;
