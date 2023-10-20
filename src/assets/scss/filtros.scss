@@ -1,0 +1,47 @@
+@import './variables';
+
+#filter-section{
+    display: none;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem;
+    //background-color: lighten($colorSecundario, 60%);
+    border: 2px solid $colorTerciario;
+    //display: none;
+    //align-items: center;
+}
+
+input[type="text"],input[type="number"]{
+    min-width: 200px;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border: 0.15rem solid $colorAcento;
+
+    &:hover{
+        border: 3px solid $colorSecundario;
+    }
+}
+
+#text{
+    min-width: 320px;
+}
+
+//Estilos para los botones de filtrado
+button{
+    min-width: 250px;
+    flex-grow: 1;
+    padding: 0.65rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    &#apply-filters,&#showFilters{
+        background-color: $colorAcento;
+        color: $blanco;
+    }
+    
+    &#apply-filters:hover,&#showFilters:hover{
+        background-color: darken($colorAcento,5%);
+    }
+
+}

@@ -29,7 +29,55 @@
 
     <main>
         <h1>Ventas de Videojuegos</h1>
+        <section id="section-venta">
+            <button id="showFilters">Filtrar Videojuegos</button>
+
+            <form id="filter-form">
+                <div id="filter-section">
+                    <select id="videogame-filter" class="filter-field" placeholder="Videojuego(s)">
+                        <option value="" selected>Todos los videojuegos</option>
+                    </select>
+                    <input type="text" id="text" placeholder="Nombre del Cliente" class="filter-field">
+                    <input type="text" id="text" placeholder="Nombre del Vendedor" class="filter-field">
+                    <input type="number" id="sale-total-min" placeholder="Venta Total Mínima" class="filter-field">
+                    <input type="number" id="sale-total-max" placeholder="Venta Total Máxima" class="filter-field">
+                    <input type="date" id="date-filter" placeholder="Fecha de Venta" class="filter-field">
+
+                    <button type="submit" id="apply-filters">Consultar</button>
+                    <button type="reset" id="reset-filters">Limpiar</button>
+                    <button type="reset" id="close-filters">Cerrar Filtros</button>
+                </div>
+            </form>
+
+            <br>
+
+            <div class="table-container">
+
+                <table id="data-table">
+                    <thead>
+                        <tr>
+                            <th>No. Venta</th>
+                            <th>Cliente</th>
+                            <th>Videojuego(s)</th>
+                            <th>Vendedor</th>
+                            <th>Fecha de Venta</th>
+                            <th>Venta Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="data-table-body">
+                        <!-- Aquí se generará la tabla dinámicamente -->
+
+                    </tbody>
+                </table>
+            </div>
+            <div id="message">
+                <p>No hay ventas disponibles en este momento.</p>
+            </div>
+        </section>
     </main>
+
+    <script src="./script.js"></script>
+    <script src="../shared/util.js"></script>
 
 </body>
 

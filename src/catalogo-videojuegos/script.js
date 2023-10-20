@@ -104,7 +104,7 @@ function showLoadingMessage() {
 function showNotFoundMessage() {
     const message = document.getElementById('message');
 
-    message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
+    message.innerHTML = 'No se encontraron videojuegos con el filtro proporcionado.';
 
     message.style.display = 'block';
 }

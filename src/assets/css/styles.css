@@ -71,13 +71,6 @@ nav {
     display: none; } }
 
 /* #endregion RESPONSIVE */
-#section-catalogo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  row-gap: 1rem; }
-
 .table-container {
   width: 100%;
   overflow-x: auto; }
@@ -140,3 +133,17 @@ button {
     color: #fff; }
   button#apply-filters:hover, button#showFilters:hover {
     background-color: #681a7f; }
+
+#section-catalogo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem; }
+
+#section-venta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 1rem; }
