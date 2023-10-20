@@ -35,13 +35,13 @@ table {
     }
 
     tbody tr {
-        border-bottom: 4px solid lighten($colorSecundario,20%);
+        border-bottom: 4px solid lighten($colorSecundario,40%);
 
         &:last-of-type{
             border-bottom: none;
         }
         &:hover{
-            background-color: lighten($colorSecundario,20%);
+            background-color: lighten($colorSecundario,40%);
         }
 
         td {
@@ -62,7 +62,8 @@ table {
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem;
-    background-color: lighten($colorSecundario, 30%);
+    //background-color: lighten($colorSecundario, 60%);
+    border: 2px solid $colorTerciario;
     //display: none;
     //align-items: center;
 }

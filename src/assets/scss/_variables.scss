@@ -1,10 +1,20 @@
-$colorPrincipal: hsl(258, 100%, 80%);
-$colorSecundario: hsl(220, 100%, 66%);
-$colorTerciario: hsl(158, 100%, 79%);
+//$colorPrincipal: hsl(258, 100%, 80%);
+$colorPrincipal: hsl(360, 83%, 65%);
+//$colorSecundario: hsl(220, 100%, 66%);
+$colorSecundario: #14248A;
+//$colorTerciario: hsl(158, 100%, 79%);
+$colorTerciario: hsl(286, 66%, 35%);
 
-$colorTexto: hsl(268, 100%, 50%);
+//$colorTexto: hsl(268, 100%, 50%);
+//$colorTexto: #fff;
+$colorTexto: #000;
 $colorAcento: hsl(228, 100%, 84%);
-$colorFondo: hsl(175, 100%, 95%);
+$colorAcento: #791E94;
+//$colorFondo: hsl(175, 100%, 95%);
+//$colorFondo: hsl(220, 15%, 20%);
+//$colorFondo: #000;
+$colorFondo: #FFFFF2;
+//$colorFondo: #DBDBDB;
 
 //$colorSecundarioLight: hsl(220, 100%, 80%);
 //$colorSecundarioOpacity: hsla(220, 100%, 66%, 0.1);
