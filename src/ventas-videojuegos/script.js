@@ -28,13 +28,13 @@ showFilter.addEventListener("click", () => {
 
 // Definimos la clase Sale
 class Sale {
-    constructor(id, customerName, videogame, salesman, saleDate, salePrice) {
+    constructor(id, cliente, videogame, vendedor, fechaVenta, ventaTotal) {
         this.id = id; // Identificador de la venta
-        this.customerName = customerName; // Nombre del cliente
+        this.cliente = cliente; // Nombre del cliente
         this.videogame = videogame; // Referencia a videojuegos vendidos
-        this.salesman = salesman; // Vendedor
-        this.saleDate = saleDate; // Fecha de la venta
-        this.salePrice = salePrice; // Precio de la venta
+        this.vendedor = vendedor; // Vendedor
+        this.fechaVenta = fechaVenta; // Fecha de la venta
+        this.ventaTotal = ventaTotal; // Precio de la venta
     }
 }
 
@@ -70,19 +70,19 @@ function closeAddSaleModal() {
 
 
 function processSubmitSale() {
-    const customerName = document.getElementById('customer-name-field').value;
+    const cliente = document.getElementById('customer-name-field').value;
     const videogame = document.getElementById('videogame-name').value;
-    const salesman = document.getElementById('salesman-field').value;
-    const saleDate = document.getElementById('sale-date-field').value;
-    const salePrice = document.getElementById('sale-price-field').value;
+    const vendedor = document.getElementById('vendedor-field').value;
+    const fechaVenta = document.getElementById('sale-date-field').value;
+    const ventaTotal = document.getElementById('sale-price-field').value;
 
     const saleToSave = new Sale(
         null,
-        customerName,
+        cliente,
         videogame,
-        salesman,
-        saleDate,
-        parseFloat(salePrice),
+        vendedor,
+        fechaVenta,
+        parseFloat(ventaTotal),
     );
 
     createSale(saleToSave);
