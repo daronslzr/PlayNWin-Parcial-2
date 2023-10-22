@@ -1,8 +1,16 @@
+//#region VARIABLES
+const imagePath = `../assets/img/videojuegos/`;
+
+const apiURL = 'https://65348606e1b6f4c59046c7f9.mockapi.io/api';
+
+let gameList = [];
+//#endregion VARIABLES
+
 class videogame {
-    constructor(id, name, plataform, description, price, rate, developers, doggo, image) {
+    constructor(id, name, platform, description, price, rate, developers, doggo, image) {
         this.id = id;
         this.name = name;
-        this.plataform = plataform;
+        this.platform = platform;
         this.description = description;
         this.price = price;
         this.rate = rate;
@@ -12,74 +20,44 @@ class videogame {
     }
 }
 
-const game1 = new videogame(1, "Baldur's Gate", "Pc/PS5/Xbox", "dnd el videojuego", 1300, 5, "Larian Studio", "si", "baldurs3.png");
-const game2 = new videogame(2, "9 Years of shadow", "Pc", "aramduras mitologicas te dean el poder", 400, 4.2, "Algo en guadalajara", "maybe", "9years.png");
-const game3 = new videogame(3, "God of war", "PS5", "dios muy enojado como para morir", 1100, 5, "naughty dogs maybe", "probablemente nope", "gow.png");
-const game4 = new videogame(4, "Pokemon blanco/negro 2", "DS", "esclabiza monstruos a tu merced", 900, 4, "nintendo", "ta raro", "pokemon.png");
-const game5 = new videogame(5, "Cosmic Wheel Sisterhood", "Xbox", "bruja fue expulsada de su convenio y planea venganza maybe", 200, 3, "si, pero esta en steam", "no hay", "cosmic.png");
-const game6 = new videogame(6, "Budukai Tenkashi 3", "PS2", "Dragon Ball z peleas shidoriz", 1000, 1, "japon", "no", "goku.png");
-//const juego2 = new RealEstate(2, "Casa Beta", "Diseño moderno y espacioso con acabados de lujo.", 3, 3.5, 350000, 300, 180, "real-estate-2.jpg");
-//const juego3 = new RealEstate(3, "Casa Teta", "Casa ideal para familias grandes con jardín y areas de convivencia.", 4, 4.5, 450000, 400, 200, "real-estate-3.jpg");
-
-/*
-// Almacenamos los objetos en un array
-const realEstateList = [game1, game2];
-
-
-// Accedemos datos por indices
-console.log('Impresion en consola de elementos accesados por indices: ');
-console.log(realEstateList[0]);
-console.log(realEstateList[1]);
-console.log(realEstateList[1]);
-
-
-// Accedemos datos con funcion forEach() de array
-console.log('Impresion en consola de elementos accesados con forEach(): ');
-realEstateList.forEach(item => {console.log(item)});
-*/
-
-
-const gamelist = [game1, game2, game3, game4, game5, game6];
-
-function displayTable(jueguitos) {
+function displayView(jueguitos) {
 
     clearTable();
 
     showLoadingMessage();
+    if (jueguitos.length === 0) {
 
-    setTimeout(() => {
+        showNotFoundMessage();
 
-        if (jueguitos.length === 0) {
+    } else {
 
-            showNotFoundMessage();
+        hideMessage();
 
-        } else {
+        displayTable(jueguitos);
+    }
+}
 
-            hideMessage();
+function displayTable(jueguitos) {
 
-            const tablaBody = document.getElementById('data-table-body');
+    const tablaBody = document.getElementById('data-table-body');
 
-            const imagePath = `../assets/img/videojuegos/`;
+    jueguitos.forEach(juego => {
 
-            jueguitos.forEach(juego => {
+        const row = document.createElement('tr');
 
-                const row = document.createElement('tr');
-
-                row.innerHTML = `
+        row.innerHTML = `
               <td> ${juego.id} </td>
               <td> <img src="${imagePath + juego.image}" alt="${juego.name}" width="100"> </td>
               <td>${juego.name}</td>
-              <td>${juego.plataform}</td>
+              <td>${juego.platform}</td>
               <td>${juego.description}</td>
               <td>${formatCurrency(juego.price)}</td>
               <td>${juego.rate}</td>
               <td>${(juego.developers)}</td>
               <td>${(juego.doggo)}</td>
             `;
-                tablaBody.appendChild(row);
-            });
-        }
-    }, 2000);
+        tablaBody.appendChild(row);
+    });
 }
 
 // Funcion que limpia la tabla
@@ -117,6 +95,13 @@ function hideMessage() {
     message.style.display = 'none';
 }
 
+//Funcion que muestra los filtros
+const showFilter = document.getElementById('showFilters');
+showFilter.addEventListener("click", () => {
+    document.getElementById('filter-section').style.display = "flex";
+    showFilter.style.display = "none";
+})
+
 function initButtonsHandler() {
 
     document.getElementById('filter-form').addEventListener('submit', event => {
@@ -135,7 +120,7 @@ function initButtonsHandler() {
         applyFilters();
         document.getElementById('filter-section').style.display = "none";
         showFilter.style.display = "block";
-    })
+    });
 }
 
 function applyFilters() {
@@ -145,9 +130,9 @@ function applyFilters() {
     const filterMinPrice = parseFloat(document.getElementById('price-min').value);
     const filterMaxPrice = parseFloat(document.getElementById('price-max').value);
 
-    const filteredGames = filterGames(gamelist, filterText, filterCalifMin, filterCalifMax, filterMinPrice, filterMaxPrice);
+    const filteredGames = filterGames(gameList, filterText, filterCalifMin, filterCalifMax, filterMinPrice, filterMaxPrice);
 
-    displayTable(filteredGames);
+    displayView(filteredGames);
 }
 
 function filterGames(jueguitos, text, minRate, maxRate, minPrice, maxPrice) {
@@ -157,16 +142,40 @@ function filterGames(jueguitos, text, minRate, maxRate, minPrice, maxPrice) {
         (!maxRate || juego.rate <= maxRate) &&
         (!minPrice || juego.price >= minPrice) &&
         (!maxPrice || juego.price <= maxPrice) &&
-        (!text || juego.name.toLowerCase().includes(text) || juego.developers.toLowerCase().includes(text) || juego.plataform.toLowerCase().includes(text))
+        (!text || juego.name.toLowerCase().includes(text) || juego.developers.toLowerCase().includes(text) || juego.platform.toLowerCase().includes(text))
     );
 }
 
-const showFilter = document.getElementById('showFilters');
-showFilter.addEventListener("click", () => {
-    document.getElementById('filter-section').style.display = "flex";
-    showFilter.style.display = "none";
-})
+function searchData() {
+    const OPTIONS = {
+        method: 'GET'
+    };
 
-displayTable(gamelist);
+    fetch(`${apiURL}/catalogo-videojuegos`, OPTIONS)
+        .then(response => response.json())
+        .then(data => {
+            //Se mapean los datos de modelos a objetos de la clase videogame
+            gameList = data.map(item => {
+                return new videogame(
+                    item.id,
+                    item.name,
+                    item.platform,
+                    item.description,
+                    item.price,
+                    item.rate,
+                    item.developers,
+                    item.doggo,
+                    item.image
+                );
+            });
+
+            //Mostramos los datos en la pagina
+            displayView(gameList);
+        })
+        .catch(error => console.log(error));
+}
+
 
 initButtonsHandler();
+
+searchData();
