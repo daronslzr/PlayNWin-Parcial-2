@@ -37,8 +37,8 @@
                     <select id="videogame-filter" class="filter-field" placeholder="Videojuego(s)">
                         <option value="" selected>Todos los videojuegos</option>
                     </select>
-                    <input type="text" id="text" placeholder="Nombre del Cliente" class="filter-field">
-                    <input type="text" id="text" placeholder="Nombre del Vendedor" class="filter-field">
+                    <input type="text" id="filtro-cliente" placeholder="Nombre del Cliente" class="filter-field">
+                    <input type="text" id="filtro-vendedor" placeholder="Nombre del Vendedor" class="filter-field">
                     <input type="number" id="sale-total-min" placeholder="Venta Total Mínima" class="filter-field">
                     <input type="number" id="sale-total-max" placeholder="Venta Total Máxima" class="filter-field">
                     <input type="date" id="date-filter" placeholder="Fecha de Venta" class="filter-field">
@@ -89,13 +89,15 @@
 
                 <label for="videogame-name">Videojuego(s) vendido(s): (selecciona mas aplastando CTRL) </label> <br>
                 <select id="videogame-name" class="form-field" type="checkbox" multiple required>
-                    <!-- Llenaremos las opciones con datos consumidos desde una api -->
+                    <!-- Llenaremos las opciones con datos consumidos desde una api 
+                    
                     <option value="Baldur">Baldurs Gate 3</option>
                     <option value="9years">9 Years of Shadow</option>
                     <option value="GodW">God of War</option>
                     <option value="Pokemon">Pokemon W/B 2</option>
                     <option value="GodW">Cosmic Wheel of Sisterhood</option>
                     <option value="Budukai">Budukai Tenkashi 3</option>
+                    -->
                 </select> <br>
 
                 <label for="salesman-field">Vendedor:</label>
@@ -115,10 +117,10 @@
 
     </main>
 
-    <script src="script.js"></script>
-    <script src="../assets/css/styles.css"></script>
+    
     <script src="../shared/util.js"></script>
     <script src="../shared/fetch-api.js"></script>
+    <script src="script.js"></script>
 
 </body>
 
