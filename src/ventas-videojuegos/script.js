@@ -1,101 +1,5 @@
 //const apiURL = 'https://65348606e1b6f4c59046c7f9.mockapi.io/api';
 
-//#region FILTROS
-
-//lleva registro de los botones de filtro
-function initButtonsHandler() {
-    //literamente FILTRA!
-    document.getElementById('filter-form').addEventListener('submit', event => {
-        event.preventDefault();
-        searchSales();
-    });
-
-    //limpia filtros
-    document.getElementById('reset-filters').addEventListener('click', () => clearSales());
-
-    //cierra el recuadro de filtros
-    const closeFilter = document.getElementById('close-filters');
-    closeFilter.addEventListener("click", () => {
-        document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
-        searchSales();
-        document.getElementById('filter-section').style.display = "none";
-        showFilter.style.display = "block";
-    })
-}
-
-function clearSales() {
-    document.querySelector('select.filter-field').selectedIndex = 0;
-    document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
-
-    displayClearSalesView();
-}
-
-    function displayClearSalesView() {
-        clearTable();
-
-        showInitialMessage();
-    }
-
-    function clearTable() {
-        const tableBody = document.getElementById('data-table-body');
-    
-        tableBody.innerHTML = '';
-    }
-
-function resetSales() {
-    document.querySelector('select.filter-field').selectedIndex = 0;
-    document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
-    searchSales();
-}
-
-function searchSales() {
-    const videogame = document.getElementById('videogame-filter-filter').value;
-    const cliente = document.getElementById('customer-filter').value;
-    const vendedor = document.getElementById('salesman-filter').value;
-    const venta-min = document.getElementById('sale-total-min').value;
-    const venta-max = document.getElementById('sale-total-max').value;
-    const fechaVenta = document.getElementById('date-filter').value;
-
-    getSalesData(realEstate, customerName, salesman, saleDate);
-}
-
-const showFilter = document.getElementById('showFilters');
-showFilter.addEventListener("click", () => {
-    document.getElementById('filter-section').style.display = "flex";
-    showFilter.style.display = "none";
-})
-
-function showInitialMessage() {
-    const message = document.getElementById('message');
-
-    message.innerHTML = 'No se ha realizado una consulta de ventas.';
-
-    message.style.display = 'block';
-}
-
-function showLoadingMessage() {
-    const message = document.getElementById('message');
-  
-    message.innerHTML = 'Cargando...';
-  
-    message.style.display = 'block';
-  }
-
-  function showNotFoundMessage() {
-    const message = document.getElementById('message');
-  
-    message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
-  
-    message.style.display = 'block';
-  }
-
-  function hideMessage() {
-    const message = document.getElementById('message');
-  
-    message.style.display = 'none';
-  }
-
-//#endregion FILTROS
 
 // Definimos la clase Sale
 class Sale {
@@ -122,6 +26,136 @@ function mapAPIToSales(data) {
     });
 }
 
+//#region VER DATOS TABLA
+
+function displaySalesView(sales) {
+    clearTable();
+    showLoadingMessage();
+
+    if (sales.length === 0) {
+        showNotFoundMessage();
+    } else {
+        hideMessage();
+        //な displaySalesTable(sales);
+    }
+}
+
+/* な
+// Funcion que agrega los datos de los modelos de los videojuegos a la tabla.
+function displaySalesTable(sales) {
+    const tablaBody = document.getElementById('data-table-body');
+
+    sales.forEach(sale => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${sale.id}</td>
+        <td>${sale.cliente}</td>
+        <td>${sale.videogame}</td>
+        <td>${sale.vendedor}</td>
+        <td>${formatDate(sale.fechaVenta)}</td>
+        <td class="text-right">${formatCurrency(sale.ventaTotal)}</td>
+        <td>
+          <button class="btn-delete" data-sale-id="${sale.id}">Eliminar</button>
+        </td>
+      `;
+        tablaBody.appendChild(row);
+    });
+    initDeleteSaleButtonHandler();
+}
+*/
+
+
+//#endregion VER DATOS TABLA
+
+//#region FILTROS  ¡¡¡¡¡***FALTA MODIFICACION***!!!!!! か
+
+//lleva registro de los botones de filtro
+function initFilterButtonsHandler() {
+    //literamente FILTRA!
+    document.getElementById('filter-form').addEventListener('submit', event => {
+        event.preventDefault();
+        searchSales();
+    });
+
+    //limpia filtros
+    document.getElementById('reset-filters').addEventListener('click', () => clearSales());
+
+    //cierra el recuadro de filtros
+    const closeFilter = document.getElementById('close-filters');
+    closeFilter.addEventListener("click", () => {
+        document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
+        searchSales();
+        document.getElementById('filter-section').style.display = "none";
+        showFilter.style.display = "block";
+    })
+}
+
+function clearSales() {
+    document.querySelector('select.filter-field').selectedIndex = 0;
+    document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
+
+    displayClearSalesView();
+}
+
+function displayClearSalesView() {
+    clearTable();
+    showInitialMessage();
+}
+
+function clearTable() {
+    const tableBody = document.getElementById('data-table-body');
+    tableBody.innerHTML = '';
+}
+
+function resetSales() {
+    document.querySelector('select.filter-field').selectedIndex = 0;
+    document.querySelectorAll('input.filter-field').forEach(input => input.value = '');
+    //な　searchSales();
+}
+
+/*　な
+function searchSales() {　//か
+    var videogame = document.getElementById('videogame-filter').value;
+    const cliente = document.getElementById('filtro-cliente').value;
+    const vendedor = document.getElementById('filtro-vendedor').value;
+    //const venta-min = document.getElementById('sale-total-min').value;
+    //const venta-max = document.getElementById('sale-total-max').value;
+    const fechaVenta = document.getElementById('date-filter').value;
+
+    getSalesData(realEstate, customerName, salesman, saleDate);
+}
+
+const showFilter = document.getElementById('showFilters');
+showFilter.addEventListener("click", () => {
+    document.getElementById('filter-section').style.display = "flex";
+    showFilter.style.display = "none";
+})
+*/
+function showInitialMessage() {
+    const message = document.getElementById('message');
+    message.innerHTML = 'No se ha realizado una consulta de ventas.';
+    message.style.display = 'block';
+}
+
+function showLoadingMessage() {
+    const message = document.getElementById('message');
+    message.innerHTML = 'Cargando...';
+    message.style.display = 'block';
+}
+
+function showNotFoundMessage() {
+    const message = document.getElementById('message');
+    message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
+    message.style.display = 'block';
+}
+
+function hideMessage() {
+    const message = document.getElementById('message');
+    message.style.display = 'none';
+}
+
+//#endregion FILTROS
+
 // #region videogame description
 
 //se crea clase de descripcion
@@ -145,6 +179,7 @@ function mapAPIToVideoGameDescriptors(data) {
 }
 
 //muestra los datos basicos de los videojuegos
+// Funcion que agrega los datos de los modelos de casas a la tabla.
 function displayVideoGameOptions(videoGames) {
     const videogameFilter = document.getElementById('videogame-filter');
     const videoGameModal = document.getElementById('videogame-name');
@@ -179,10 +214,10 @@ function getVideoGameData() {
 
 //#region crear venta
 
-//
+//procesa la creaicon de una venta
 function processSubmitSale() {
     const cliente = document.getElementById('customer-name-field').value;
-    const videogame = document.getElementById('real-estate-field').values;
+    const videogame = document.getElementById('videogame-name').values;
     const vendedor = document.getElementById('salesman-field').value;
     const fechaVenta = document.getElementById('sale-date-field').value;
     const ventaTotal = document.getElementById('sale-price-field').value;
@@ -196,6 +231,7 @@ function processSubmitSale() {
         parseFloat(ventaTotal),
     );
 
+    console.log(saleToSave);
     createSale(saleToSave);
 }
 
@@ -203,12 +239,25 @@ function createSale(sale) {
     fetchAPI(`${apiURL}/ventas-videojuegos`, 'POST', sale)
         .then(sale => {
             closeAddSaleModal();
-            resetSales();
+          //な  resetSales();
             window.alert(`Venta ${sale.id} creada correctamente.`);
         });
 }
 
 //#endregion crear venta
+
+//#region ELIMINAR VENTA
+
+function initDeleteSaleButtonHandler() {
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', () => {
+            const saleId = button.getAttribute('data-sale-id'); // Obtenemos el ID de la venta
+            deleteSale(saleId); // Llamamos a la función para eleminar la venta
+        });
+    });
+}
+
+//#endregion ELIMINAR VENTA
 
 // #region MODAL
 function initAddSaleButtonsHandler() {
@@ -243,8 +292,61 @@ function closeAddSaleModal() {
 
 //#endregion MODAL
 
+//#region APIS COMMANDS
+/*　な
+function getSalesData(realEstate, customerName, salesman, saleDate) {　//か
+    const url = buildGetSalesDataUrl(realEstate, customerName, salesman, saleDate);
+    fetchAPI(url, 'GET')
+        .then(data => {
+            const salesList = mapAPIToSales(data);
+            displaySalesView(salesList);
+        });
+}
+
+function deleteSale(saleId) {
+    const confirm = window.confirm(`¿Estás seguro de que deseas eliminar la venta ${saleId}?`);
+    if (confirm) {
+        fetchAPI(`${apiURL}/sales/${saleId}`, 'DELETE')
+            .then(() => {
+                resetSales();
+                window.alert("Venta eliminada.");
+            });
+    }
+}
+
+// Funcion que genera la url para consultar ventas con filtros.
+function buildGetSalesDataUrl(realEstate, customerName, salesman, saleDate) { //か
+    // Tecnica de string dinamico: se aconseja cuando tenemos una cantidad limitada de parámetros y
+    //    cierto control de los tipos de parametros (id, fechas).
+    // const url = `${apiURL}/sales?realEstate=${realEstate}&customerName=${customerName}&salesman=${salesman}&saleDate=${saleDate}`;
+
+    // URL y URLSearchParams: simplifican la construcción de URLs dinámicas y complejas,
+    //    facilitan la gestión de múltiples parámetros y textos dinámicos al encargarse de
+    //    la codificación y decodificación de caracteres especiales, lo que evita problemas
+    //    comunes relacionados con espacios y caracteres no válidos.
+    const url = new URL(`${apiURL}/sales`);
+
+    if (realEstate) {
+        url.searchParams.append('realEstate', realEstate);
+    }
+
+    if (customerName) {
+        url.searchParams.append('customerName', customerName);
+    }
+
+    if (salesman) {
+        url.searchParams.append('salesman', salesman);
+    }
+
+    if (saleDate) {
+        url.searchParams.append('saleDate', saleDate);
+    }
+    return url;
+}
+*/
+//#endregion APIS COMMANDS
 
 
+initFilterButtonsHandler();
 initAddSaleButtonsHandler();
-initButtonsHandler();
 getVideoGameData();
