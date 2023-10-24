@@ -226,7 +226,7 @@ function getVideoGameData() {
 //procesa la creaicon de una venta
 function processSubmitSale() {
     const idVideoGame = document.getElementById('videogame-name').value;
-    console.log(idVideoGame);
+    //console.log(idVideoGame);
     const cliente = document.getElementById('customer-name-field').value;
     const videoGame = document.getElementById('videogame-name').options[document.getElementById('videogame-name').selectedIndex].text.split(' - ')[0];
     const vendedor = document.getElementById('salesman-field').value;
@@ -312,7 +312,21 @@ function getSalesData(url,ventaMin,ventaMax) {　//か
     fetchAPI(url, 'GET')
         .then(data => {
             const salesList = mapAPIToSales(data);
-            salesList.filter(sale => sale.ventaTotal>ventaMin && sale.ventaTotal<ventaMax);
+
+            if (ventaMax != '' && ventaMin != '') {
+                const chaeckList=salesList.filter(sale => sale.ventaTotal>+ventaMin && sale.ventaTotal<+ventaMax);
+                displaySalesView(chaeckList);
+                return;
+            } if (ventaMax != '') {
+                const chaeckList=salesList.filter(sale => sale.ventaTotal<+ventaMax);
+                displaySalesView(chaeckList);
+                return;
+            } if (ventaMin != '') {
+                const chaeckList=salesList.filter(sale => sale.ventaTotal>+ventaMin);
+                displaySalesView(chaeckList);
+                return;
+            }
+
             displaySalesView(salesList);
             
         });

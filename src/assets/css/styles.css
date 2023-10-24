@@ -159,6 +159,18 @@ input, textarea, select {
   flex-direction: column;
   flex-wrap: wrap; }
 
+.btn-delete {
+  min-width: 250px;
+  flex-grow: 1;
+  padding: 0.65rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background-color: #791E94;
+  color: #fff; }
+
+.btn-delete:hover {
+  background-color: #a250bb; }
+
 .modal-background {
   display: none;
   position: fixed;
