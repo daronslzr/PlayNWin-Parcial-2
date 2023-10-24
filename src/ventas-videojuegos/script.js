@@ -154,7 +154,7 @@ function showLoadingMessage() {
 
 function showNotFoundMessage() {
     const message = document.getElementById('message');
-    message.innerHTML = 'No se encontraron casas con el filtro proporcionado.';
+    message.innerHTML = 'No se encontraron ventas con el filtro proporcionado.';
     message.style.display = 'block';
 }
 
@@ -338,6 +338,7 @@ function deleteSale(saleId) {
         fetchAPI(`${apiURL}/ventas-videojuegos/${saleId}`, 'DELETE')
             .then(() => {
                 resetSales();
+                displayClearSalesView();
                 window.alert("Venta eliminada.");
             });
     }
